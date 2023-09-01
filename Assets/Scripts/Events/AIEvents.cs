@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class AIEvents : MonoBehaviour
+public static class AIEvents 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static UnityEvent<AIEventSpwanArgs> SpwnAI = new UnityEvent<AIEventSpwanArgs>(); 
+    public static UnityEvent<GameObject> DespwnAI = new UnityEvent<GameObject>();
 
-    // Update is called once per frame
-    void Update()
+}
+
+public class AIEventSpwanArgs
+{
+    Vector3 spawnPosition;
+    Vector3 endPosition; 
+    public AIEventSpwanArgs(Vector3 spawnPosition, Vector3 endPosition)
     {
-        
+        this.spawnPosition = spawnPosition;
+        this.endPosition = endPosition; 
     }
 }
