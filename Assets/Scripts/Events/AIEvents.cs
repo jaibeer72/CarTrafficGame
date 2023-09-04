@@ -7,6 +7,7 @@ public static class AIEvents
 {
     public static UnityEvent<AIEventSpwanArgs> SpwnAI = new UnityEvent<AIEventSpwanArgs>(); 
     public static UnityEvent<GameObject> DespwnAI = new UnityEvent<GameObject>();
+    public static UnityEvent<bool> StopSpwanEnumirator = new UnityEvent<bool>();
 
 }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,23 +17,111 @@ public class AIObjectPool : MonoBehaviour
     GameObject[] aiObjects;
     public int aiObjectCount = 10;
     public GameObject aiObjectPrefab;
-    public Transform spawnPostionsParent; 
+    public Transform spawnPostionsParent;
     private Transform[] spawnPostions;
     public int MaxOnBoard = 3;
-    private int _CurrentOnBoard; 
-    private Dictionary<GameObject,bool> IsAiAliveDictionary = new Dictionary<GameObject, bool>();
+    private int _CurrentOnBoard;
+    private Dictionary<GameObject, bool> IsAiAliveDictionary = new Dictionary<GameObject, bool>();
+    private bool _StopSpwanEnumirator = false;
+
+    private IEnumerator _coroutine;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _CurrentOnBoard = 0;
-        spawnPostions = spawnPostionsParent.GetComponentsInChildren<Transform>();
+        // onlyy if the spawn positions iis not equal to partent position 
+        // then get the spawn positions
+
+        spawnPostions = spawnPostionsParent.GetComponentsInChildren<Transform>().Where(t => t != spawnPostionsParent.transform).ToArray();
+
         aiObjects = new GameObject[aiObjectCount];
         for (int i = 0; i < aiObjectCount; i++)
         {
-            aiObjects[i] = Instantiate(aiObjectPrefab, transform);
+            aiObjects[i] = Instantiate(aiObjectPrefab, transform) as GameObject;
             aiObjects[i].SetActive(false);
             IsAiAliveDictionary.Add(aiObjects[i], false);
         }
     }
+
+    private void Start()
+    {
+        _coroutine = SpawnAIObject();
+        StartCoroutine(_coroutine);
+        AIEvents.StopSpwanEnumirator.AddListener(OnStopSpwanEnumirator);
+    }
+
+    private void OnStopSpwanEnumirator(bool arg0)
+    {
+        _StopSpwanEnumirator = arg0;
+        if (arg0)
+            StopCoroutine(_coroutine); 
+    }
+
+    private void OnDestroy()
+    {
+        _StopSpwanEnumirator = true;
+        StopCoroutine(_coroutine);
+        AIEvents.StopSpwanEnumirator.RemoveListener(OnStopSpwanEnumirator);
+    }
+    private IEnumerator SpawnAIObject()
+    {
+        // wait for 3 seconds   
+        yield return new WaitForSeconds(3);
+        while (!_StopSpwanEnumirator)
+        {
+            Shuffle(spawnPostions);
+            if (_CurrentOnBoard > MaxOnBoard)
+                yield return null;
+
+            for (int i = 0; i < aiObjectCount; i++)
+            {
+                var aiAgent = aiObjects[i].GetComponent<AI_Agent>();
+                if(_CurrentOnBoard < MaxOnBoard)
+                {
+                    if (!IsAiAliveDictionary[aiObjects[i]])
+                    {
+                        aiAgent.SetStartPoint(spawnPostions[UnityEngine.Random.Range(0, spawnPostions.Length)].position);
+                        // look straight ahead
+                        aiAgent.transform.LookAt(spawnPostionsParent.transform.position);
+                        aiObjects[i].SetActive(true);
+                        IsAiAliveDictionary[aiObjects[i]] = true;
+                        aiAgent.SetDestination(spawnPostions[UnityEngine.Random.Range(0, spawnPostions.Length)].position, spawnPostionsParent.transform.position);
+                        _CurrentOnBoard++;
+                    }
+                }
+                if (IsAiAliveDictionary[aiObjects[i]] && aiAgent.IsAtDestination())
+                {
+                    // despwan the AI object
+                    aiObjects[i].SetActive(false);
+                    IsAiAliveDictionary[aiObjects[i]] = false;
+                    _CurrentOnBoard--;
+                }
+                yield return null;
+            }
+            yield return null;
+        }
+    }
+
+    void Shuffle(Transform[] array)
+    {
+        int n = array.Length;
+        for (int i = n - 1; i > 0; i--)
+        {
+            int j = UnityEngine.Random.Range(0, i + 1);
+            Transform temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
+    // Corotine Properties that i need to defien to make it flexible 
+    // waitforSeconds ?
+    // Coroutine that manages the delay of spawning AI objects
+    // checks how many compared to Max on board 
+    // then spans the AI object if there is room
+    // then assigns the AI object a spawn position
+    // and sets the AI object to active
+    // and sets the AI object to alive
+    // then sets the AI object to the end position
 
 }

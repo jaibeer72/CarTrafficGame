@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     }
     private void OnWayPointChange(Vector3 arg0)
     {
-        Debug.Log("Affermitive"); 
         agent.SetDestination(arg0);
     }
 
