@@ -26,6 +26,7 @@ public class AIObjectPool : MonoBehaviour
 
     private IEnumerator _coroutine;
     // Start is called before the first frame update
+
     void Awake()
     {
         _CurrentOnBoard = 0;
@@ -40,6 +41,24 @@ public class AIObjectPool : MonoBehaviour
             aiObjects[i] = Instantiate(aiObjectPrefab, transform) as GameObject;
             aiObjects[i].SetActive(false);
             IsAiAliveDictionary.Add(aiObjects[i], false);
+        }
+        AIEvents.DespwnAI.AddListener(OnDespwnAI);
+    }
+
+    private void OnDespwnAI(GameObject arg0)
+    {
+        // Find the AI object in the dictionary and set it to false
+        // then set the game object to false
+        DisableAI(arg0);
+    }
+
+    private void DisableAI(GameObject arg0)
+    {
+        if (IsAiAliveDictionary.ContainsKey(arg0))
+        {
+            IsAiAliveDictionary[arg0] = false;
+            arg0.SetActive(false);
+            _CurrentOnBoard--;
         }
     }
 
@@ -92,9 +111,7 @@ public class AIObjectPool : MonoBehaviour
                 if (IsAiAliveDictionary[aiObjects[i]] && aiAgent.IsAtDestination())
                 {
                     // despwan the AI object
-                    aiObjects[i].SetActive(false);
-                    IsAiAliveDictionary[aiObjects[i]] = false;
-                    _CurrentOnBoard--;
+                    DisableAI(aiObjects[i]);
                 }
                 yield return null;
             }
