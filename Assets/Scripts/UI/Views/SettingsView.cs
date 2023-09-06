@@ -16,7 +16,7 @@ public class SettingsView : UIView
 
     private GameConfig gameConfigData = null;
 
-
+    public string MainMenuButtonName = "MainMenu"; 
 
     protected override void OnViewInitialized()
     {
@@ -60,7 +60,8 @@ public class SettingsView : UIView
 
         scrollView.Add(MaxCollectablesOnBoardSliderContainer);
 
-
+        Button mainMenuButton = RootVisualElement.Q<Button>(MainMenuButtonName);
+        mainMenuButton.clicked += () => UIEvents.UIChangeEvent.Invoke("MainMenu");
     }
 
     private void OnMaxCollectablesOnBoardSliderValueChanged(ChangeEvent<int> evt)

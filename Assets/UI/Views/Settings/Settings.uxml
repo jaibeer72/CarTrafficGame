@@ -1,8 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="OptionsContainer" src="project://database/Assets/UI/Components/OptionsContainer.uxml?fileID=9197481963319205126&amp;guid=834f20eb66e9c7c43a756ef1e566afed&amp;type=3#OptionsContainer" />
-    <ui:VisualElement name="Root" style="width: 100%; height: 100%;">
+    <ui:VisualElement name="Root" style="width: 100%; height: 100%; align-items: center; justify-content: center;">
         <ui:ScrollView name="ScrollView" style="margin-left: 70px; margin-right: 70px; margin-top: 70px; margin-bottom: 70px; min-width: 80%; min-height: 80%;">
             <ui:Instance template="OptionsContainer" name="OptionsContainer" style="padding-left: 17px; padding-right: 17px; padding-top: 17px; padding-bottom: 17px;" />
         </ui:ScrollView>
+        <ui:Button text="Back" display-tooltip-when-elided="true" enable-rich-text="false" name="MainMenu" style="flex-wrap: wrap; flex-direction: row; min-width: 14%; min-height: 4%; margin-left: 15px; margin-right: 15px; margin-top: 15px; margin-bottom: 39px;" />
     </ui:VisualElement>
 </ui:UXML>

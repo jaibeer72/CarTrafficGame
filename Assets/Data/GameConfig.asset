@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   configData:
     GameTimer: 60
-    NumberOfEnemiesOnBoard: 3
-    NumberOfCollectablesOnBoard: 3
+    MaxEnemiesOnBoard: 3
+    MaxCollectablesOnBoard: 3
