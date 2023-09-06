@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class CollectablesControlller : MonoBehaviour
 {
+    [SerializeField]
+    private GameConfig gameConfig;
     // Start is called before the first frame update
     public GameObject[] collectables;
     private int _currentCollectableOnBoard = 0;
-    public int maxCollectableOnBoard = 3;
+    private int maxCollectableOnBoard;
     public int PlayGroundRadius = 10;
 
     private IEnumerator _coroutine;
@@ -20,6 +22,8 @@ public class CollectablesControlller : MonoBehaviour
 
         _coroutine = SpwanRandomeLyOnTheLevel();
         StartCoroutine(_coroutine);
+
+        maxCollectableOnBoard = gameConfig.configData.MaxCollectablesOnBoard;
 
         CollectablesEvents.PlayerCollected.AddListener(OnPlayerCollected);
     }

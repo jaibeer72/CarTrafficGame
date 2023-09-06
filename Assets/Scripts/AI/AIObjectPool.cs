@@ -14,12 +14,16 @@ public class AIObjectPool : MonoBehaviour
     // 4. keep track of how many AI objects are alive
     // 5. assign the AI end position based on the spwn location
     // 
+
+    [SerializeField]
+    private GameConfig gameConfig;
+
     GameObject[] aiObjects;
     public int aiObjectCount = 10;
     public GameObject aiObjectPrefab;
     public Transform spawnPostionsParent;
     private Transform[] spawnPostions;
-    public int MaxOnBoard = 3;
+    private int m_MaxEnemiesOnBoard = 3;
     private int _CurrentOnBoard;
     private Dictionary<GameObject, bool> IsAiAliveDictionary = new Dictionary<GameObject, bool>();
     private bool _StopSpwanEnumirator = false;
@@ -30,6 +34,7 @@ public class AIObjectPool : MonoBehaviour
     void Awake()
     {
         _CurrentOnBoard = 0;
+        m_MaxEnemiesOnBoard = gameConfig.configData.MaxEnemiesOnBoard;
         // onlyy if the spawn positions iis not equal to partent position 
         // then get the spawn positions
 
@@ -89,13 +94,13 @@ public class AIObjectPool : MonoBehaviour
         while (!_StopSpwanEnumirator)
         {
             Shuffle(spawnPostions);
-            if (_CurrentOnBoard > MaxOnBoard)
+            if (_CurrentOnBoard > m_MaxEnemiesOnBoard)
                 yield return null;
 
             for (int i = 0; i < aiObjectCount; i++)
             {
                 var aiAgent = aiObjects[i].GetComponent<AI_Agent>();
-                if(_CurrentOnBoard < MaxOnBoard)
+                if(_CurrentOnBoard < m_MaxEnemiesOnBoard)
                 {
                     if (!IsAiAliveDictionary[aiObjects[i]])
                     {

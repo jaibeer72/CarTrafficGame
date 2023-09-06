@@ -1,6 +1,17 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Views/HUD/HUD.uss?fileID=7433441132597879392&amp;guid=9474cf9794cf446deb4208bb65c80fa0&amp;type=3#HUD" />
-    <ui:VisualElement name="Header" style="max-width: 100%; width: 100%; height: 18%; align-items: center;">
-        <HealthBarComponent value="65.5" low-color="#FF1010FF" mid-color="#FFEF00FF" high-color="#36FF00FF" high-value="100" title="Health" style="height: 198px; width: 619px; padding-top: 79px;" />
+    <ui:VisualElement name="Root" style="width: 100%; height: 100%;">
+        <ui:VisualElement name="Header" style="max-width: 100%; width: 100%; height: auto; align-items: flex-start; flex-direction: row; justify-content: center; min-width: 100%; min-height: 25%;">
+            <HealthBarComponent value="65.5" low-color="#FF1010FF" mid-color="#FFEF00FF" high-color="#36FF00FF" high-value="100" title="Health" style="height: auto; width: auto; padding-top: 79px; min-width: 25%; min-height: 100%;" />
+            <ui:VisualElement name="MoneyContainer" style="max-width: none; width: 25%; height: 100%;">
+                <ui:Label text="10,000" display-tooltip-when-elided="true" name="MoneyLabel" style="margin-left: 46px; margin-right: 46px; margin-top: 46px; margin-bottom: 46px; font-size: 55px; max-width: none; width: auto;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="GameBody" style="width: 100px; height: 50px; min-width: 100%; min-height: 50%;" />
+        <ui:VisualElement name="Footer" style="flex-direction: row; height: 100px; width: 100px; padding-bottom: -18px; min-width: 100%; min-height: 50px; align-items: center; justify-content: center;">
+            <ui:VisualElement name="TimerContainer" style="flex-direction: column-reverse; align-items: center; justify-content: center;">
+                <ui:Label text="01:00" display-tooltip-when-elided="true" name="TimerLabel" style="font-size: 71px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

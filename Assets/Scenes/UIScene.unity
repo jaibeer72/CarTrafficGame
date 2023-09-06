@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8409ca2696d4c4d8a85455313be1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirstUIView: HUD
+  FirstUIView: MainMenu
 --- !u!1 &781640490
 GameObject:
   m_ObjectHideFlags: 0

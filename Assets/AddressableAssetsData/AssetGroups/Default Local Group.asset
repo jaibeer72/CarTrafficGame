@@ -16,7 +16,27 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 2ac1890d835361140927253d3390c115
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 8b09e43145f07cf448c0fe259a2e54fa
+    m_Address: Assets/UI/Views/MainMenu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0d4616ecde46f2448bed70333311a852
+    m_Address: Assets/UI/Views/MainMenu/MainMenu.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f2387173bb0f0f44cb267a6730e15183
+    m_Address: Assets/UI/Views/GameOver/GameOver.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 69d545a85e72aa044b978ac29fbd24bd
+    m_Address: Assets/UI/Views/Settings/Settings.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 834f20eb66e9c7c43a756ef1e566afed
+    m_Address: Assets/UI/Components/OptionsContainer.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 83683ee31ccb6cc40b826914ea03e44d, type: 2}
   m_SchemaSet:
