@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Views/HUD/HUD.uss?fileID=7433441132597879392&amp;guid=9474cf9794cf446deb4208bb65c80fa0&amp;type=3#HUD" />
+    <ui:VisualElement name="Header" style="max-width: 100%; width: 100%; height: 18%; align-items: center;">
+        <ui:ProgressBar value="22" title="my-progress" class="low" style="height: 116px; width: 433px; margin-top: 64px;" />
+    </ui:VisualElement>
+</ui:UXML>
