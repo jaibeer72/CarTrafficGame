@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec6b75fafb6f724ea2d5794f4f4fb31, type: 3}
-  m_Name: PlayerStatsData
+  m_Script: {fileID: 11500000, guid: b1487f5d688e4f94f828f879d599dbdc, type: 3}
+  m_Name: Built In Data_PlayerDataGroupSchema
   m_EditorClassIdentifier: 
-  stats:
-    Health: 52
-    Score: 0
-    Level: 0
-    Money: 0
+  m_Group: {fileID: 11400000, guid: c466c3120f001b440b3603de4e8502f7, type: 2}
+  m_IncludeResourcesFolders: 1
+  m_IncludeBuildSettingsScenes: 1
