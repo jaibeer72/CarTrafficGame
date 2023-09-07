@@ -31,6 +31,11 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator LoadSceneAsync(string scene, LoadSceneMode mode, System.Action onComplete = null)
     {
+        if(SceneManager.GetSceneByName(scene).isLoaded)
+        {
+            onComplete?.Invoke();
+            yield break; 
+        }
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene, mode);
         while (!asyncOperation.isDone)
         {

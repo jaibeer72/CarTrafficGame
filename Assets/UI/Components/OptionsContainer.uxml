@@ -1,6 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement name="OptionsContainer" style="flex-direction: row; align-items: center; justify-content: center; min-width: 100%; min-height: 100%; width: auto; flex-wrap: wrap; flex-grow: 0; flex-shrink: 1;">
-        <ui:Label text="Label" display-tooltip-when-elided="true" style="font-size: 45px; margin-right: 0; min-width: 50%; min-height: 50%; white-space: nowrap; justify-content: space-between; align-items: center; -unity-text-align: middle-center; margin-left: 0; margin-top: 0; margin-bottom: 0;" />
-        <ui:SliderInt picking-mode="Ignore" value="7" high-value="10" show-input-field="true" low-value="1" name="SliderControl" inverted="false" style="height: auto; width: auto; min-width: 50%; min-height: 50%; align-items: center; justify-content: center; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-outline-color: rgba(0, 0, 0, 255); color: rgba(0, 0, 0, 255);" />
+    <ui:VisualElement name="OptionsContainerRoot" style="min-width: 100%; min-height: 100%; flex-direction: row; align-items: center; justify-content: space-around; flex-wrap: wrap;">
+        <ui:Label text="Label" display-tooltip-when-elided="true" name="OptionsLabel" style="font-size: 50%; margin-right: 0; min-width: 30%; min-height: 50%; white-space: nowrap; justify-content: space-between; align-items: auto; -unity-text-align: middle-center; margin-left: 0; margin-top: 0; margin-bottom: 0; height: auto; width: auto;" />
+        <ui:VisualElement name="OptionsContainer" style="flex-direction: column; align-items: center; justify-content: center; min-width: 39%; min-height: 50%; width: auto; flex-wrap: wrap; flex-grow: 0; flex-shrink: 1;">
+            <ui:SliderInt picking-mode="Ignore" value="7" high-value="10" show-input-field="true" low-value="1" name="SliderControl" inverted="false" direction="Horizontal" style="height: 50px; width: 512px; min-width: 25%; min-height: 25%; align-items: center; justify-content: center; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-outline-color: rgb(0, 0, 0); color: rgb(0, 0, 0);" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

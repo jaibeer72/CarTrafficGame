@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStatsData
   m_EditorClassIdentifier: 
   stats:
-    Health: 52
+    Health: 0
     Score: 0
     Level: 0
-    Money: 0
+    Money: 115000
