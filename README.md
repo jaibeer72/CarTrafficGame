@@ -15,7 +15,7 @@ The game setup was easy. All that was needed to be done was set up the player pl
 
 Lastly, setting up the MainCamera to a viable position for gameplay. I like the more isometric view, so I placed it that way.
 
-![[./Images/Screenshot 2023-09-06 at 19.21.34.png]]
+![[./Images/Screenshot 2023-09-06 at 19.21.34.png]](./Images/Screenshot%202023-09-06%20at%2019.21.34.png)
 This is the base of what the end product looks like but the idea is similar. 
 Once the setup was done i knew the main model i wanted to push for. 
 
@@ -91,7 +91,7 @@ classDiagram
     Events "1" o-- "1" EventInvokers : uses
 
 ```
-![[Images/mermaid-diagram-2023-09-06-185228.png]]
+![[Images/mermaid-diagram-2023-09-06-185228.png]](./Images/mermaid-diagram-2023-09-06-185228.png)
 
 
 
@@ -198,14 +198,14 @@ On the AISide at this point, we could do similar things in the AIObject pool. Th
 ```
 
 
-![[Screenshot 2023-09-07 at 11.26.43.png]]
+![[Screenshot 2023-09-07 at 11.26.43.png]](./Images/Screenshot%202023-09-07%20at%2011.26.43.png)
 Now it was all about setting up the NavMesh area this made sure we can not more easily control AI. 
 
 ### AI Spwan locations 
 
 So to have a working spawn locations and have them work properly I decided to set up a AI Spwn position to be on the edges. 
 
-![[Screenshot 2023-09-07 at 12.06.35.png]]
+![[Screenshot 2023-09-07 at 12.06.35.png]](./Images/Screenshot%202023-09-07%20at%2012.06.35.png)
 
 Now, We just made a gizmo for each spawn point this was for 2 reasons 
 - A visual representation to know exactly where the AI Cars will spawn and 
@@ -403,14 +403,14 @@ also! I knew that Y value wouldn't change for now, so I just decided to make it 
 ```
 
 Don't know why I like counters so much. But explicit counters in base-level code do not have magic numbers is something I like. Now we add some particles and some particals and 
-![[Screenshot 2023-09-07 at 12.47.43.png]]
+![[Screenshot 2023-09-07 at 12.47.43.png]](./Images/Screenshot%202023-09-07%20at%2012.47.43.png)
 
 I gave money  different colours based on how much money they give you cause... I could not find the real textures in the pack so i thought I'll make do. 
 # Event-based Explosion spanning 
 
 ALL RIGHT ! NOW TO GET THE PART I WAS worried about. I don't want to really expand the AI_Agent class making it do 5 different things making it Less SOLID. So this will be .. 
 
-![[Screenshot 2023-09-07 at 12.50.48.png]]
+![[Screenshot 2023-09-07 at 12.50.48.png]](./Images/Screenshot%202023-09-07%20at%2012.50.48.png)
 Apparently easier than I thought.  I just had to import Unity's particle pack and set it to destroy after done playing. 
 
 ```Csharp 
@@ -546,7 +546,7 @@ But what if we want to know if something has changed?
 
 
 so making so we don't need much more to worry about in terms of data integrity. it's easy to maintain and now we can also see it change live at one place. 
-![[Screenshot 2023-09-07 at 13.28.31.png]]
+![[Screenshot 2023-09-07 at 13.28.31.png]](./Images/Screenshot%202023-09-07%20at%2013.28.31.png)
 
 Now we can easily keep track of and also maintain a configuration. 
 
@@ -562,12 +562,12 @@ NOW! We are going to my favourite part of the whole project
 How did we accomplish that ? 
 
 firstly a separate scene 
-![[Screenshot 2023-09-07 at 13.56.19.png]]
+![[Screenshot 2023-09-07 at 13.56.19.png]](./Images/Screenshot%202023-09-07%20at%2013.56.19.png)
 that will only have the UI document. 
 
 We will be using Unity's UXML UI builder so we can easily use CSS and Other Components 
 
-![[Screenshot 2023-09-07 at 13.57.25.png]]
+![[Screenshot 2023-09-07 at 13.57.25.png]](./Images/Screenshot%202023-09-07%20at%2013.57.25.png)
 Flexible UI that can is based on flex containers making it easy to work with different components. 
 
 and customizable components to make things work so we can add set remove and even access components. 
@@ -652,7 +652,7 @@ public class HealthBarComponent : ProgressBar
 ```
 
 The above allows us to set the progress bar's value based on the value to change and this is not editable on the UI builder as well. 
-![[Screenshot 2023-09-07 at 14.01.42.png]]
+![[Screenshot 2023-09-07 at 14.01.42.png]](./Images/Screenshot%202023-09-07%20at%2014.01.42.png)
 with now the ability to add different colours. 
 
 ## Now for the actual code design. 
@@ -736,7 +736,7 @@ public class UIViewRegistryEditor
 ```
 
 this gives us every time we save it can load it all but also now we can also do it manually 
-![[Screenshot 2023-09-07 at 14.13.48.png]]
+![[Screenshot 2023-09-07 at 14.13.48.png]](./Images/Screenshot%202023-09-07%20at%2014.13.48.png)
 
 now we can write the UIVIew that will be our base class that will be our monobehivior attachment for each view 
 
@@ -864,7 +864,7 @@ public class HUDview : UIView, IObserver<PlayerStats>, IObserver<GameConfigData>
 ```
 
 which gives us a simple 2 scripts 
-![[Screenshot 2023-09-07 at 14.36.22.png]]
+![[Screenshot 2023-09-07 at 14.36.22.png]](./Images/Screenshot%202023-09-07%20at%2014.36.22.png)
 
 # Scene Composition to easily add or subtract 
 
@@ -939,5 +939,5 @@ exmaple1
 
 so now we have 3 scenes: one base scene, one that has the UI and one that has the Actors and all we need to do to restart is unload the GameActors and reload it in
 
-![[Screenshot 2023-09-07 at 14.37.38.png]]
+![[Screenshot 2023-09-07 at 14.37.38.png]](./Images/Screenshot%202023-09-07%20at%2014.37.38.png)
 
