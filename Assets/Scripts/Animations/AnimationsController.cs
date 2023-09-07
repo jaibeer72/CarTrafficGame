@@ -19,4 +19,8 @@ public class AnimationsController : MonoBehaviour
         ParticleSystem system = explosion.GetComponent<ParticleSystem>();
         system.Play();
     }
+    private void OnDestroy()
+    {
+        AIEvents.DespwnAI.RemoveListener(OnAIDespwan); 
+    }
 }

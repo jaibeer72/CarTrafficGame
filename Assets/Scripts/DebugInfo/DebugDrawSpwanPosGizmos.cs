@@ -25,9 +25,4 @@ public class DebugDrawSpwanPosGizmos : MonoBehaviour
             } 
         }
     }
-
-    private void Update()
-    {
-
-    }
 }

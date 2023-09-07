@@ -136,14 +136,4 @@ public class AIObjectPool : MonoBehaviour
         }
     }
 
-    // Corotine Properties that i need to defien to make it flexible 
-    // waitforSeconds ?
-    // Coroutine that manages the delay of spawning AI objects
-    // checks how many compared to Max on board 
-    // then spans the AI object if there is room
-    // then assigns the AI object a spawn position
-    // and sets the AI object to active
-    // and sets the AI object to alive
-    // then sets the AI object to the end position
-
 }
